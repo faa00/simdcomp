@@ -14,7 +14,7 @@
 uint32_t bits(const uint32_t v);
 
 /* max integer logarithm over a range of SIMDBlockSize integers (128 integer) */
-uint32_t maxbits(const uint32_t *begin);
+uint32_t maxbits(const int *begin);
 
 /* same as maxbits, but we specify the number of integers */
 uint32_t maxbits_length(const uint32_t *in, uint32_t length);

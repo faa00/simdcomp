@@ -39,15 +39,24 @@ static uint32_t maxbitas32int(const __m128i accumulator) {
   return bits(ans);
 }
 
-SIMDCOMP_PURE uint32_t maxbits(const uint32_t *begin) {
-  const __m128i *pin = (const __m128i *)(begin);
-  __m128i accumulator = _mm_loadu_si128(pin);
-  uint32_t k = 1;
-  for (; 4 * k < SIMDBlockSize; ++k) {
-    __m128i newvec = _mm_loadu_si128(pin + k);
-    accumulator = _mm_or_si128(accumulator, newvec);
-  }
-  return maxbitas32int(accumulator);
+SIMDCOMP_PURE uint32_t maxbits(const int *begin) {
+    const __m128i *pin = (const __m128i *)(begin);
+    __m128i accumulator = _mm_loadu_si128(pin);
+    __m128i mask = _mm_srai_epi32(accumulator, 31);
+    __m128i tmp = _mm_add_epi32(accumulator, mask);
+    accumulator = _mm_xor_si128(tmp, mask);
+
+    uint32_t k = 1;
+    for (; 4 * k < SIMDBlockSize; ++k) {
+
+        __m128i newvec = _mm_loadu_si128(pin + k);
+        mask = _mm_srai_epi32(newvec, 31);
+        tmp = _mm_add_epi32(newvec, mask);
+        newvec = _mm_xor_si128(tmp, mask);
+
+        accumulator = _mm_or_si128(accumulator, newvec);
+    }
+    return maxbitas32int(accumulator);
 }
 static uint32_t orasint(const __m128i accumulator) {
   const __m128i _tmp1 = _mm_or_si128(
