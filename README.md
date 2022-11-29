@@ -28,6 +28,7 @@ format. It is up to the (sophisticated) user to create a compressed format.
 It is used by:
 - [upscaledb](https://github.com/cruppstahl/upscaledb)
 - [EventQL](https://github.com/eventql/eventql)
+- [ManticoreSearch](https://manticoresearch.com)
 
 
 
@@ -128,7 +129,7 @@ If you are a go user, there is a "go" folder where you will find a simple demo.
 
 Other libraries
 ----------------
-
+* Fast Bitpacking algorithms: Rust port of simdcomp https://github.com/quickwit-oss/bitpacking
 * SIMDCompressionAndIntersection: A C++ library to compress and intersect sorted lists of integers using SIMD instructions https://github.com/lemire/SIMDCompressionAndIntersection
 * The FastPFOR C++ library : Fast integer compression https://github.com/lemire/FastPFor
 * High-performance dictionary coding https://github.com/lemire/dictionary
@@ -152,7 +153,7 @@ Other programming languages
 
 References
 ------------
-* Daniel Lemire, Nathan Kurz, Christoph Rupp, Stream VByte: Faster Byte-Oriented Integer Compression, Information Processing Letters (to appear) https://arxiv.org/abs/1709.08990
+* Daniel Lemire, Nathan Kurz, Christoph Rupp, Stream VByte: Faster Byte-Oriented Integer Compression, Information Processing Letters, Information Processing Letters 130, February 2018, Pages 1-6https://arxiv.org/abs/1709.08990
 * Jianguo Wang, Chunbin Lin, Yannis Papakonstantinou, Steven Swanson, An Experimental Study of Bitmap Compression vs. Inverted List Compression, SIGMOD 2017 http://db.ucsd.edu/wp-content/uploads/2017/03/sidm338-wangA.pdf
 * P. Damme, D. Habich, J. Hildebrandt, W. Lehner, Lightweight Data Compression Algorithms: An Experimental Survey (Experiments and Analyses), EDBT 2017 http://openproceedings.org/2017/conf/edbt/paper-146.pdf
 * P. Damme, D. Habich, J. Hildebrandt, W. Lehner, Insights into the Comparative Evaluation of Lightweight Data Compression Algorithms, EDBT 2017 http://openproceedings.org/2017/conf/edbt/paper-414.pdf
